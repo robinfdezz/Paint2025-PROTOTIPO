@@ -1,0 +1,196 @@
+[33mcommit d684e6fb3851c7535bf971375094c55096c6d74d[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Robinzon <robinzon.m.g.f@gmail.com>
+Date:   Wed May 14 14:08:54 2025 -0400
+
+    Se implemento el cambio de cursor
+
+[33mcommit 3657a355478bf68242df9e010355706bcd4dd6f2[m
+Author: Robinzon <robinzon.m.g.f@gmail.com>
+Date:   Wed May 14 10:56:53 2025 -0400
+
+    Se agrego la lata de pintura
+
+[33mcommit fdefb25e6e83ea84802dd7d4548839be0407d9f6[m
+Author: Robinzon <robinzon.m.g.f@gmail.com>
+Date:   Wed May 14 10:41:15 2025 -0400
+
+    Se agregaron varios cambios visuales y se manejaron algunos errores, faltan mas cambios y arreglos
+
+[33mcommit ce4890bed4bd8516a41b891a042861a294d266f9[m
+Author: Frailyn <falifms0508@gmail.com>
+Date:   Mon May 12 22:57:19 2025 -0400
+
+    Se agrego la opcion de la cubeta de pintura.
+
+[33mcommit e1c634d11bb4c0a22d14862d28ac9662cd05b28d[m
+Merge: 6c75544 bcfe092
+Author: Juniorbp20 <109877955+Juniorbp20@users.noreply.github.com>
+Date:   Fri May 9 19:19:17 2025 -0300
+
+    Merge remote-tracking branch 'origin/main'
+    
+    # Conflicts:
+    #       src/figuras/Ring.java
+    #       src/figuras/Semicirculo.java
+    #       src/iconos/semicirculo.png
+    #       src/paint202510/BarraDeHerramientas.java
+    #       src/paint202510/PanelDeDibujo.java
+
+[33mcommit 6c755449788197fa08a20ad78c1dc05cebbc133b[m
+Author: Juniorbp20 <109877955+Juniorbp20@users.noreply.github.com>
+Date:   Fri May 9 18:55:41 2025 -0300
+
+    creacion de copiar y pegar, barra de herramienta mejorada, documentacion del codigo, cambio de VentanaPrincipal a Ventana y por ultimo mejoras en la clase ring y semicirculo.
+
+[33mcommit bcfe09280838f723f3141720f0273bb2f9ec6678[m
+Author: ebene <ebene@LAPTOP-HJHLLDV1>
+Date:   Thu May 8 11:10:54 2025 -0400
+
+    Implementacion exitosa de la clase Ring
+
+[33mcommit 92e3301e43701907b523f3c2b5a527fae9540377[m
+Author: ebene <ebene@LAPTOP-HJHLLDV1>
+Date:   Thu May 8 11:00:02 2025 -0400
+
+    trabajando en la clase Ring
+
+[33mcommit 7eabde62afa887b669fe6fa22c04f298e12ebb9c[m
+Author: ebene <ebene@LAPTOP-HJHLLDV1>
+Date:   Thu May 8 10:43:11 2025 -0400
+
+    Implementacion exitosa de la clase semicirculo
+
+[33mcommit 8b5193df07228177f09f50646819f8ab3c374ab7[m
+Author: Evzph <ebenezerp07@gmail.com>
+Date:   Wed May 7 21:41:05 2025 -0400
+
+    Add files via upload
+    
+    Creación y Trabajando en la Clase semicírculo
+
+[33mcommit bf691d219caf5518341bc561c6704ef0315269c7[m
+Author: Juniorbp20 <109877955+Juniorbp20@users.noreply.github.com>
+Date:   Wed May 7 10:07:05 2025 -0300
+
+    Mejoras a las clases Corazon y trapecio
+
+[33mcommit ae8a7231d82c40adcc2b74867fe7bc39625e4de6[m
+Author: Bryan1621 <bc710447@gmail.com>
+Date:   Tue May 6 23:42:49 2025 -0400
+
+    Clase Trepecio y Corazon terminadas
+
+[33mcommit 751df1c0dda3b059e3c4be12bd522bedb1114acf[m
+Author: Robinzon <robinzon.m.g.f@gmail.com>
+Date:   Sun May 4 20:55:02 2025 -0400
+
+    barra de herramientas arriba
+
+[33mcommit 3847afbab4a5cfac32e1d21ef095177f925393e6[m
+Author: Juniorbp20 <109877955+Juniorbp20@users.noreply.github.com>
+Date:   Sat May 3 22:16:09 2025 -0300
+
+    creacion de clase Estrella y clase Flecha
+
+[33mcommit 0791f48a19303c29d586899898ae94c44c212d4c[m
+Author: Carol Reynoso <145731567+CarolReynoso@users.noreply.github.com>
+Date:   Fri May 2 21:08:13 2025 -0400
+
+    Añadidas clases Heptagono y Octagono, iconos correspondientes, y modificaciones en la interfaz de dibujo.
+
+[33mcommit aad30177d605edfb2d5eb793189c896862ac6745[m
+Author: MxrcosGC <marcoscamilo358@gmail.com>
+Date:   Tue Apr 29 23:50:45 2025 -0400
+
+    Agregado Pentagono y Rombo
+
+[33mcommit 0b928bcd9487aaa5294d7aaf818007ffd2628c97[m
+Author: Frailyn <falifms0508@gmail.com>
+Date:   Sun Apr 27 19:43:12 2025 -0400
+
+    Clase Cuadrado y Clase Triangulo
+
+[33mcommit 11d763ba52a22c33dd975adbed36268107bb00e8[m
+Author: Robinzon <robinzon.m.g.f@gmail.com>
+Date:   Sat Apr 26 15:15:19 2025 -0400
+
+    Pequenhas modificaciones despues de agregar el guardado
+
+[33mcommit 1652fed50abce2be342722969ba0d9377e6a8469[m
+Author: Robinzon <robinzon.m.g.f@gmail.com>
+Date:   Sat Apr 26 14:54:25 2025 -0400
+
+    Funcionalidad de guardado agregada, en espera de mejorar su forma de jecutarse
+
+[33mcommit 0e27294f9e07b687c605862dfbb9205b30542608[m
+Author: Robinzon <robinzon.m.g.f@gmail.com>
+Date:   Fri Apr 25 16:40:05 2025 -0400
+
+    Cambios de disenho en la barra de herramientas
+
+[33mcommit 2f9c926386b1385e60d0f840767ba6373e62bc22[m
+Author: Robinzon <robinzon.m.g.f@gmail.com>
+Date:   Fri Apr 25 15:31:24 2025 -0400
+
+    Clase circulo y ovalo creadas
+
+[33mcommit 4f6bb691737d2601d985331f8857b425545ec387[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: Junior <jbonifacio0707@gmail.com>
+Date:   Wed Apr 23 21:50:32 2025 -0400
+
+    Clase rectangulo y borrador agregados
+
+[33mcommit f196919f2205784d64b448f9c59a6b0e91836019[m
+Author: Robinzon <robinzon.m.g.f@gmail.com>
+Date:   Tue Apr 22 20:19:47 2025 -0400
+
+    segunda prueba Robinzon
+
+[33mcommit 06e99c1c7cae27ca0ef49cacaaa96686f99a9bc8[m
+Author: Carol Reynoso <145731567+CarolReynoso@users.noreply.github.com>
+Date:   Tue Apr 22 20:10:51 2025 -0400
+
+    cambios de Carolina
+
+[33mcommit f4b5fa7f6cf25e8b9840ba01071e76481386fe4e[m
+Author: Juniorbp20 <109877955+Juniorbp20@users.noreply.github.com>
+Date:   Sun Apr 13 02:19:51 2025 -0300
+
+    pruba bonifacio
+
+[33mcommit 6c057a2282e485666a2bec741c1e4a8b3de6cb43[m
+Author: MxrcosGC <marcoscamilo358@gmail.com>
+Date:   Sat Apr 12 18:59:20 2025 -0700
+
+    Prueba Marcos
+
+[33mcommit a8110eee33e91f8ae46a35e7949750b2c82f63cb[m
+Merge: f83a8ff 8a4b5bd
+Author: Robinzon <robinzon.m.g.f@gmail.com>
+Date:   Sat Apr 12 21:49:37 2025 -0400
+
+    Prueba Robin
+
+[33mcommit 8a4b5bdf2a8b8c86faf432319368e79f2481a579[m
+Author: Frailyn <falifms0508@gmail.com>
+Date:   Sat Apr 12 21:20:45 2025 -0400
+
+    prueba frailyn
+
+[33mcommit 724fa859421537e193b20b7dbba6e0b87b82e9c4[m
+Author: Robinzon <robinzon.m.g.f@gmail.com>
+Date:   Sat Apr 12 20:34:03 2025 -0400
+
+    first commit
+
+[33mcommit f83a8ffee31332e25d8693b432501572974a7a68[m
+Author: Robinzon <robinzon.m.g.f@gmail.com>
+Date:   Sat Apr 12 20:31:26 2025 -0400
+
+    first commit
+
+[33mcommit 9cdf5a4f729e44fec981cb0ef89f1fe6a18114db[m
+Author: Jose Ariel Pereyra Francisco <josearielpereyra@gmail.com>
+Date:   Wed Apr 2 18:39:10 2025 -0400
+
+    DIB-0001 Crea las clases iniciales del proyecto
