@@ -11,9 +11,6 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Stack;
 import javax.imageio.ImageIO;
-// import java.awt.datatransfer.Clipboard;
-// import java.awt.datatransfer.Transferable;
-// import java.awt.datatransfer.UnsupportedFlavorException;
 
 public class PanelDeDibujo extends JPanel implements HerramientaSeleccionadaListener {
     private Figura figuraActual;
@@ -27,7 +24,6 @@ public class PanelDeDibujo extends JPanel implements HerramientaSeleccionadaList
     private Graphics2D lienzoGraphics;
 
     private BufferedImage imagenDeFondo;
-
 
     private Cursor cursorDibujoGeneral;
     private Cursor cursorBorrador;
@@ -92,7 +88,7 @@ public class PanelDeDibujo extends JPanel implements HerramientaSeleccionadaList
         }
     }
 
-private void crearLienzoImagen() {
+    private void crearLienzoImagen() {
         int width = getWidth() > 0 ? getWidth() : getPreferredSize().width;
         int height = getHeight() > 0 ? getHeight() : getPreferredSize().height;
 
@@ -175,6 +171,9 @@ private void crearLienzoImagen() {
                 String herramienta = barraDeHerramientas.getHerramientaSeleccionada();
 
                 if ("Seleccionar Figura".equals(herramienta)) {
+                    undoStack.push(copyImage(lienzoImagen));
+                    redoStack.clear();
+
                     if (areaSeleccionada != null && areaSeleccionada.contains(e.getPoint())) {
                         isDraggingSelectedArea = true;
                         offsetMovimiento = new Point(e.getX() - areaSeleccionada.x, e.getY() - areaSeleccionada.y);
@@ -185,8 +184,6 @@ private void crearLienzoImagen() {
                         areaSeleccionada = null;
                         imagenSeleccionada = null;
                         imagenFondoRecorte = null;
-                        undoStack.push(copyImage(lienzoImagen));
-                        redoStack.clear();
                     }
                     repaint();
                     return;
@@ -199,8 +196,7 @@ private void crearLienzoImagen() {
                         if (clickedX >= 0 && clickedX < lienzoImagen.getWidth() &&
                                 clickedY >= 0 && clickedY < lienzoImagen.getHeight()) {
 
-                            Color targetColor = new Color(lienzoImagen.getRGB(clickedX, clickedY), true); // true para
-                                                                                                          // ARGB
+                            Color targetColor = new Color(lienzoImagen.getRGB(clickedX, clickedY), true);
                             Color replacementColor = panelDeColores.getColorRellenoActual();
 
                             if (!targetColor.equals(replacementColor)) {
@@ -241,20 +237,19 @@ private void crearLienzoImagen() {
                     if (isDraggingSelectedArea) {
                         isDraggingSelectedArea = false;
                         if (imagenSeleccionada != null && areaSeleccionada != null) {
-                            Graphics2D g2dTemp = lienzoImagen.createGraphics();
-                            g2dTemp.setComposite(AlphaComposite.Clear);
-                            g2dTemp.fillRect(areaSeleccionada.x, areaSeleccionada.y, areaSeleccionada.width,
+                            Graphics2D g2dClear = lienzoImagen.createGraphics();
+                            g2dClear.setComposite(AlphaComposite.Clear);
+                            g2dClear.fillRect(areaSeleccionada.x, areaSeleccionada.y, areaSeleccionada.width,
                                     areaSeleccionada.height);
-                            g2dTemp.setComposite(AlphaComposite.SrcOver);
-                            g2dTemp.drawImage(imagenFondoRecorte, areaSeleccionada.x, areaSeleccionada.y, null);
-                            g2dTemp.dispose();
+                            g2dClear.dispose();
 
-                            areaSeleccionada.setLocation(e.getX() - offsetMovimiento.x, e.getY() - offsetMovimiento.y);
-                            lienzoGraphics.drawImage(imagenSeleccionada, areaSeleccionada.x, areaSeleccionada.y, null);
+                            int newX = e.getX() - offsetMovimiento.x;
+                            int newY = e.getY() - offsetMovimiento.y;
 
+                            lienzoGraphics.drawImage(imagenSeleccionada, newX, newY, null);
+
+                            areaSeleccionada.setLocation(newX, newY);
                         }
-                        deseleccionarArea();
-
                     } else {
                         if (inicioArrastreSeleccion != null && finArrastreSeleccion != null) {
                             int x = Math.min(inicioArrastreSeleccion.x, finArrastreSeleccion.x);
@@ -264,26 +259,18 @@ private void crearLienzoImagen() {
 
                             if (width > 0 && height > 0) {
                                 areaSeleccionada = new Rectangle(x, y, width, height);
-
                                 try {
                                     imagenSeleccionada = lienzoImagen.getSubimage(x, y, width, height);
-                                    imagenFondoRecorte = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
-                                    Graphics2D g2dFondo = imagenFondoRecorte.createGraphics();
-                                    g2dFondo.drawImage(lienzoImagen, 0, 0, width, height, x, y, x + width, y + height,
-                                            null);
-                                    g2dFondo.dispose();
                                 } catch (java.awt.image.RasterFormatException ex) {
                                     System.err.println(
                                             "Error al recortar imagen (área fuera de límites?): " + ex.getMessage());
                                     areaSeleccionada = null;
                                     imagenSeleccionada = null;
                                     imagenFondoRecorte = null;
-
                                     if (undoStack.size() > 1) {
                                         undoStack.pop();
                                     }
                                 }
-
                             } else {
                                 deseleccionarArea();
                             }
@@ -323,9 +310,12 @@ private void crearLienzoImagen() {
 
                 if ("Seleccionar Figura".equals(herramienta)) {
                     if (isDraggingSelectedArea) {
-                        if (imagenSeleccionada != null && areaSeleccionada != null) {
-                            repaint();
+                        if (!undoStack.isEmpty()) {
+                            lienzoImagen = copyImage(undoStack.peek());
+                            lienzoGraphics = lienzoImagen.createGraphics();
+                            lienzoGraphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
                         }
+                        repaint();
                     } else {
                         finArrastreSeleccion = e.getPoint();
                         repaint();
@@ -579,9 +569,12 @@ private void crearLienzoImagen() {
         return b;
     }
 
-    public Figura getFiguraSeleccionada() {return null;}
+    public Figura getFiguraSeleccionada() {
+        return null;
+    }
 
-    public void addFigura(Figura figura) {}
+    public void addFigura(Figura figura) {
+    }
 
     public void deseleccionarFigura() {
         deseleccionarArea();
