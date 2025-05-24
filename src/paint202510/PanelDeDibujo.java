@@ -92,7 +92,7 @@ public class PanelDeDibujo extends JPanel implements HerramientaSeleccionadaList
         }
     }
 
-    private void crearLienzoImagen() {
+private void crearLienzoImagen() {
         int width = getWidth() > 0 ? getWidth() : getPreferredSize().width;
         int height = getHeight() > 0 ? getHeight() : getPreferredSize().height;
 
@@ -103,10 +103,13 @@ public class PanelDeDibujo extends JPanel implements HerramientaSeleccionadaList
 
         lienzoImagen = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         lienzoGraphics = lienzoImagen.createGraphics();
-        lienzoGraphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-        lienzoGraphics.setColor(getBackground());
+        lienzoGraphics.setComposite(AlphaComposite.Clear);
         lienzoGraphics.fillRect(0, 0, width, height);
+        lienzoGraphics.setComposite(AlphaComposite.SrcOver);
+
+        lienzoGraphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        lienzoGraphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
 
         if (imagenDeFondo != null) {
             lienzoGraphics.drawImage(imagenDeFondo, 0, 0, this);
@@ -114,8 +117,9 @@ public class PanelDeDibujo extends JPanel implements HerramientaSeleccionadaList
 
         if (undoStack.isEmpty()) {
             undoStack.push(copyImage(lienzoImagen));
+        } else {
+            undoStack.push(copyImage(lienzoImagen));
         }
-        undoStack.push(copyImage(lienzoImagen));
         redoStack.clear();
     }
 
